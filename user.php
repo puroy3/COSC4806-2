@@ -19,7 +19,10 @@ Class User {
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
-  
+
+  // $hash = password_hash("password123", PASSWORD_DEFAULT);
+  // if (password_verify($_REQUEST['password'], $hash)) {
+
 }
 
 ?>
