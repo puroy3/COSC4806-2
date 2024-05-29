@@ -19,6 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $password2 = $_POST['password2'];
+  // If the minimum password length is less than 11 or password is not identical to password2, print a message.
+  if (strlen($password) < 11 || $password !== $password2) {
+    echo "The password does not meet the minimum length requirement of 11 characters or the passwords do not match."
+  }
 }
 // Ask for 3 things:
 // Username
