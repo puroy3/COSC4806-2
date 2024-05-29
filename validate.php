@@ -1,6 +1,6 @@
 <?php
 
-  session_start();
+  //session_start();
 
   require_once('user.php');
 
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If the user is authenticated, redirect to index.php.
     if ($authenticate) {
       $_SESSION['authenticated'] = true;
-      $_SESSION[username] = $username;
+      //$_SESSION['username'] = $username;
       header ('location: /');
     }
     else {

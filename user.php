@@ -41,10 +41,11 @@ Class User {
   }
 
   public function authenticateuser($username, $password) {
-    $db = $db_connect();
+    $db = db_connect();
     $statement = $db->prepare("select password_hash FROM users WHERE username = ?");
     $statement->execute([$username]);
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
     if (password_verify($_REQUEST['password'], $hash) && $user) {
       return true;
   }
@@ -53,5 +54,5 @@ Class User {
     }
 
 }
-
+}
 ?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 require_once('database.php');
 
@@ -27,7 +27,7 @@ if (!isset($_SESSION['failed_attempts'])){
 if ($_SESSION['failed_attempts'] > 0) {
   echo "This is unsuccessful attempt number " . $_SESSION['failed_attempts'] . ".";
 }
-  
+
 ?>
 
 <!DOCTYPE html>
