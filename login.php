@@ -14,6 +14,7 @@ if (!isset($_SESSION['failed_attempts'])){
 if ($_SESSION['failed_attempts'] > 0) {
   echo "This is unsuccessful attempt number " . $_SESSION['failed_attempts'] . ".";
 }
+  // When a user signs in, we are going to take their username and password, hash the password, compare that hash to what's already in the database, and if they match the user can login to the system.
 ?>
 
 <!DOCTYPE html>
