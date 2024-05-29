@@ -1,9 +1,10 @@
 <?php
 
   session_start();
-
-  $valid_username = "pushpak";
+  // Don't hardcode username and password.
+  /*$valid_username = "pushpak";
   $valid_password = "1";
+  */ 
 
   $username = $_REQUEST['username'];
   $_SESSION['username'] = $username;
