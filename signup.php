@@ -45,3 +45,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Redirect to login.php to sign in to the website.
 ?>
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signup</title>
+  </head>
+
+  <body>
+
+    <h1>Signup Form</h1>
+
+    <form method="post">
+      <label for="username">Username:</label>
+      <br>
+      <input type="text" id="username" name="username" required>
+      <br>
+      <label for="password">Password:</label>
+      <br>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <label for="password2">Confirm Password:</label>
+      <br>
+      <input type="password" id="password2" name="password2" required>
+      <br>
+      <br>
+      <input type="submit" value="Create an account">
+      <br>
+    </form>
+
+  </body>    
+</html>
