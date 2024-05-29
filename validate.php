@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   }
 
-  // if (password_verify($_REQUEST['password'], $hash)) {
+
 
     // Don't hardcode username and password.
     /*$valid_username = "pushpak";
