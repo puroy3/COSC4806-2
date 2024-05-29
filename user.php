@@ -40,8 +40,6 @@ Class User {
     return $rows;
   }
 
-  // if (password_verify($_REQUEST['password'], $hash)) {
-
 }
 
 ?>

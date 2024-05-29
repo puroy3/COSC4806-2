@@ -11,6 +11,15 @@ if (isset($_SESSION['DB_DOWN'])) {
   echo "The database is down.";
   exit;
 }
+
+require_once('user.php');
+
+// Checking if any data is sent.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+  $password2 = $_POST['password2'];
+}
 // Ask for 3 things:
 // Username
 // Password
