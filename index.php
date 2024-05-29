@@ -17,3 +17,25 @@ print_r($user_list);
 */
 
 ?>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pushpak Roy</title>
+  </head>
+
+  <body>
+
+      <h1>Assignment 2</h1>
+
+      <p> Welcome, <?=$_SESSION['username'] ?></p> 
+
+      <?php echo "Today is " . date("l, F j, Y") . "."?>
+
+  </body>
+
+
+  <footer>
+    <p><a href="/logout.php"> Click here to logout </a></p>
+  </footer>
+</html>
