@@ -37,6 +37,8 @@ if ($_SESSION['failed_attempts'] > 0) {
       <br>
       <br>
       <input type="submit" value="Submit">
+      <br>
+      <p><a href="/signup.php"> Create an Account here </a></p>
     </form>
 
   </body>    
