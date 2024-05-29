@@ -31,14 +31,15 @@ Class User {
     if ($statement->fetchAll()) {
       return false;
     }
-    
-    $statement = $db->prepare("INSERT into users //add stuff");
+    // Hash the password.
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    // Create an SQL statement to insert the new user into the database using the username and the password hash.
+    $statement = $db->prepare("INSERT into users (username, password_hash) VALUES (?, ?)");
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
 
-  // $hash = password_hash("password123", PASSWORD_DEFAULT);
   // if (password_verify($_REQUEST['password'], $hash)) {
 
 }
