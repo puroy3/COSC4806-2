@@ -12,6 +12,8 @@ if (isset($_SESSION['DB_DOWN'])) {
   exit;
 }
 
+require_once('user.php');
+
 // If the user is logged in and attempts to go to login.php, it redirects them to index.php.
 if (isset($_SESSION['authenticated'])) {
   header("Location: index.php");
@@ -25,9 +27,6 @@ if (!isset($_SESSION['failed_attempts'])){
 if ($_SESSION['failed_attempts'] > 0) {
   echo "This is unsuccessful attempt number " . $_SESSION['failed_attempts'] . ".";
 }
-  // When a user signs in, we are going to take their username and password, hash the password, compare that hash to what's already in the database, and if they match, the user can log in to the system.
-  
-// if (password_verify($_REQUEST['password'], $hash)) {
   
 ?>
 

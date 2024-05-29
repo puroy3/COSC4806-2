@@ -2,7 +2,7 @@
 
 require_once ('config.php');
 // Use session to track if the DB is down.
-session_start();
+// session_start();
 
 /* Create a global variable to track if the DB is down.  
 $GLOBALS['DB_DOWN'] = false;
