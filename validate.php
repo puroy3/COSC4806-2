@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       exit;
     }
     */
-    $statement = $db->prepare("select password FROM users WHERE username = :username");
+    $statement = $db->prepare("select password FROM users WHERE username = ?");
       $statement->execute([$username]);
       $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
       return $rows;

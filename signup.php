@@ -17,11 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   }
   // Check to see if the account username already exists.
-  $statement = $db->prepare("SELECT * FROM users WHERE username = :username");
+  $statement = $db->prepare("SELECT * FROM users WHERE username = ?");
   $statement->execute([$username]);
   // If the username already exists, return false.
   if ($statement->fetchAll()) {
     return false;
+    header("Location: signup.php");
+    echo "The username already exists.";
   }
   else {
   // If the minimum password length is less than 11 or password is not identical to password2, print a message.
@@ -34,8 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $statement = $db->prepare("INSERT into users (username, password) VALUES (?, ?)");
     $statement->execute([$username, $hash]);
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $rows;
+    //$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //return $rows;
+    header("Location: login.php");
     /* $user = new User();
     // If the user is created successfully, redirect to login.php to sign in to the website.
     if ($user->create_user($username, $password)) {
