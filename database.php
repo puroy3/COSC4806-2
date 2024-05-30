@@ -1,7 +1,9 @@
 <?php
+
 require_once ('config.php');
+
 // Use session to track if the DB is down.
-session_start();
+// session_start();
 
 function db_connect() {
   try {
@@ -11,7 +13,7 @@ function db_connect() {
   catch (PDOException $e) {
     echo "Database is down. Error: " . $e->getMessage();
     // We should set a global variable here so we know the DB is down.
-    $_SESSION['DB_DOWN'] = true;
+    // $_SESSION['DB_DOWN'] = true;
     exit;
   }
 }
