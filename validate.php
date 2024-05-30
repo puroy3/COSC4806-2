@@ -1,5 +1,5 @@
 <?php
-  //session_start();
+  session_start();
   require_once('database.php');
   // When a user signs in, we are going to take their username and password, hash the password, compare that hash to what's already in the database, and if they match, the user can log in to the system.
 //require_once('user.php');
@@ -12,10 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Connect to database.
   $db = db_connect();
   // Check if the database is down.
-  if (isset($_SESSION['DB_DOWN'])) {
+  /*if (isset($_SESSION['DB_DOWN'])) {
     echo "The database is down.";
     exit;
   }
+  */
     // Don't hardcode username and password.
     /*$valid_username = "pushpak";
     $valid_password = "1";
@@ -40,12 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       exit;
     }
     */
-    $statement = $db->prepare("select password FROM users WHERE username = ?");
+    // Get the hashed password from the database.
+      $statement = $db->prepare("select password_hash FROM users WHERE username = ?");
       $statement->execute([$username]);
       $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-      return $rows;
+      // return $rows;
       
-    if ($rows && password_verify($password, $rows['password'])) {
+    if ($rows && password_verify($password, $rows['password_hash'])) {
       $_SESSION['authenticated'] = true;
       $_SESSION['username'] = $username;
       header ('location: /');
@@ -59,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       // header... redirect to login.php
       header("Location: login.php");
-      exit;
     }
 }
 
