@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the hashed password from the database.
       $statement = $db->prepare("select password_hash FROM users WHERE username = ?");
       $statement->execute([$username]);
-      $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+      $rows = $statement->fetch();
       // return $rows;
       
     if ($rows && password_verify($password, $rows['password_hash'])) {

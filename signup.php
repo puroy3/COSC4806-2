@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Check if password length is less than 11.
   if (strlen($password) < 11) {
     // If less, print the message.
-    echo "Password has to be at minimum 11 characters."
+    echo "Password has to be at minimum 11 characters.";
   }
   // Check if the two inputted passwords match.
   else if ($password !== $password2) {
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if any matches occur.
     if ($statement->fetchAll()) {
       // If matches occur, then the username is already taken, so print the message.
-      echo "This username is already taken. Choose a different one."
+      echo "This username is already taken. Choose a different one.";
     }
     else {
       // Hash the password and insert it into the database.
@@ -37,9 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $statement = $db->prepare("insert into users (username, password_hash) VALUES (?, ?)");
       $statement->execute([$username, $password_hash]);
       // Tell the user that the account was created.
-      echo "Your account was created successfully.";
+      echo "Your account was created successfully. Press login here.";
     }
   }
+}
   // Check if the database is down.
   /*if (isset($_SESSION['DB_DOWN'])) {
     echo "The database is down.";

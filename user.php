@@ -18,7 +18,7 @@ Class User {
     $statement = $db->prepare("INSERT into users (username, password_hash) VALUES (?, ?)");
     // Hash the password.
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    $statement->execute([$username, $hash]);
+    $statement->execute([$username, $password_hash]);
     /*$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
     */
