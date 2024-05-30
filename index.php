@@ -1,7 +1,7 @@
 <?php
-//session_start();
+session_start();
 
-require_once('database.php');
+/*require_once('database.php');
 
 // Connect to database.
 $db = db_connect();
@@ -11,7 +11,7 @@ if (isset($_SESSION['DB_DOWN'])) {
   echo "The database is down.";
   exit;
 }
-
+*/
 // Check if user is authenticated.
 // If not, send them to login.php using header()...
 if (!isset($_SESSION['authenticated'])) {
