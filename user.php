@@ -36,11 +36,12 @@ Class User {
     $statement->execute();
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return ($rows);
+    $hash = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
     $statement = $db->prepare("select password_hash FROM users WHERE username = :username");
     $statement->execute([$username]);
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
-    if (password_verify($_REQUEST['password'], $hash) && $user) {
+    if (password_verify($_REQUEST['password'], $hash) === password_verify(password_hash, $hash)) {
       return true;
   }
     else {
