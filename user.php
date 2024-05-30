@@ -14,23 +14,24 @@ Class User {
 
   public function create_user($username, $password) {
     $db = db_connect();
+    // Hash the password.
+    $hash = password_hash($password, PASSWORD_DEFAULT);
     // Check to see if the account username already exists.
-    $statement = $db->prepare("SELECT * FROM users WHERE username = :username");
+    /*$statement = $db->prepare("SELECT * FROM users WHERE username = :username");
     $statement->execute([$username]);
     // If the username already exists, return false.
     if ($statement->fetchAll()) {
       return false;
     }
-    // Hash the password.
-    $hash = password_hash($password, PASSWORD_DEFAULT);
     // Create an SQL statement to insert the new user into the database using the username and the password hash.
-    $statement = $db->prepare("INSERT into users (username, password_hash) VALUES (?, ?)");
+    */
+    $statement = $db->prepare("INSERT into users (username, password) VALUES (?, ?)");
     $statement->execute([$username, $hash]);
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
 
-  public function authenticateuser($username, $password) {
+  /*public function authenticateuser($username, $password) {
     $db = db_connect();
     $statement = $db->prepare("SELECT * FROM users WHERE username = '$_REQUEST['username']");
     $statement->execute();
@@ -50,4 +51,5 @@ Class User {
 
 }
 }
+*/
 ?>
