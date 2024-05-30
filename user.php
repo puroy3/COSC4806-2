@@ -15,7 +15,7 @@ Class User {
   public function create_user($username, $password) {
     $db = db_connect();
     // Check to see if the account username already exists.
-    $statement = $db->prepare("SELECT * FROM users WHERE username = ?");
+    $statement = $db->prepare("SELECT * FROM users WHERE username = :username");
     $statement->execute([$username]);
     // If the username already exists, return false.
     if ($statement->fetchAll()) {
