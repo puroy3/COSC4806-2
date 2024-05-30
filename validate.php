@@ -1,6 +1,6 @@
 <?php
 
-  //session_start();
+  session_start();
 
   require_once('user.php');
 
@@ -22,13 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
   }
 
-
-
     // Don't hardcode username and password.
     /*$valid_username = "pushpak";
     $valid_password = "1";
      
-
     $username = $_REQUEST['username'];
     $_SESSION['username'] = $username;
     $password = $_REQUEST['password'];
@@ -43,11 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // If the user is authenticated, redirect to index.php.
     if ($authenticate) {
       $_SESSION['authenticated'] = true;
-      //$_SESSION['username'] = $username;
+      $_SESSION['username'] = $username;
       header ('location: /');
     }
     else {
-
       if (!isset($_SESSION['failed_attempts'])){
         $_SESSION['failed_attempts'] = 1;
       }
