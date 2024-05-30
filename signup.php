@@ -2,30 +2,41 @@
 session_start();
 
 require_once('database.php');
-
-// Connect to database.
-$db = db_connect();
-
-// Check if the database is down.
-if (isset($_SESSION['DB_DOWN'])) {
-  echo "The database is down.";
-  exit;
-}
-
-require_once('user.php');
+//require_once('user.php');
 
 // Checking if any data is sent.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $password2 = $_POST['password2'];
+  // Connect to database.
+  $db = db_connect();
+  // Check if the database is down.
+  if (isset($_SESSION['DB_DOWN'])) {
+    echo "The database is down.";
+    exit;
+  }
+  // Check to see if the account username already exists.
+  $statement = $db->prepare("SELECT * FROM users WHERE username = :username");
+  $statement->execute([$username]);
+  // If the username already exists, return false.
+  if ($statement->fetchAll()) {
+    return false;
+  }
+  else {
   // If the minimum password length is less than 11 or password is not identical to password2, print a message.
   if (strlen($password) < 11 || $password !== $password2) {
     echo "The password does not meet the minimum length requirement of 11 characters or the passwords do not match.";
   }
   // Otherwise, create a new user.  
   else {
-    $user = new User();
+    // Hash the password.
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $statement = $db->prepare("INSERT into users (username, password) VALUES (?, ?)");
+    $statement->execute([$username, $hash]);
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+    /* $user = new User();
     // If the user is created successfully, redirect to login.php to sign in to the website.
     if ($user->create_user($username, $password)) {
       header("Location: login.php");
@@ -35,7 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else {
       echo "The username already exists.";
     }
+    */
   }
+}
 }
 // Ask for 3 things:
 // Username
