@@ -1,7 +1,7 @@
 <?php
-//session_start();
+session_start();
 
-require_once('database.php');
+/*require_once('database.php');
 
 // Connect to database.
 $db = db_connect();
@@ -11,7 +11,7 @@ if (isset($_SESSION['DB_DOWN'])) {
   echo "The database is down.";
   exit;
 }
-
+*/
 // If the user is logged in and attempts to go to login.php, it redirects them to index.php.
 if (isset($_SESSION['authenticated'])) {
   header("Location: index.php");
@@ -42,6 +42,7 @@ if ($_SESSION['failed_attempts'] > 0) {
       <label for="username">Username:</label>
       <br>
       <input type="text" id="username" name="username">
+      <br>
       <br>
       <label for="password">Password:</label>
       <br>
