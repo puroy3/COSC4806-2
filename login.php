@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 
 require_once('database.php');
 
@@ -11,8 +11,6 @@ if (isset($_SESSION['DB_DOWN'])) {
   echo "The database is down.";
   exit;
 }
-
-require_once('user.php');
 
 // If the user is logged in and attempts to go to login.php, it redirects them to index.php.
 if (isset($_SESSION['authenticated'])) {
