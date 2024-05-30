@@ -14,14 +14,16 @@ Class User {
 
   public function create_user($username, $password) {
     $db = db_connect();
-    // Hash the password.
-    $hash = password_hash($password, PASSWORD_DEFAULT);
     // Create an SQL statement to insert the new user into the database using the username and the password hash.
-    $statement = $db->prepare("INSERT into users (username, password) VALUES (?, ?)");
+    $statement = $db->prepare("INSERT into users (username, password_hash) VALUES (?, ?)");
+    // Hash the password.
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
     $statement->execute([$username, $hash]);
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    /*$rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
+    */
   }
+}
 
   /*public function authenticateuser($username, $password) {
     $db = db_connect();
