@@ -25,14 +25,18 @@ Class User {
     $hash = password_hash($password, PASSWORD_DEFAULT);
     // Create an SQL statement to insert the new user into the database using the username and the password hash.
     $statement = $db->prepare("INSERT into users (username, password_hash) VALUES (?, ?)");
-    $statement->execute();
+    $statement->execute([$username, $hash]]);
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
   }
 
   public function authenticateuser($username, $password) {
     $db = db_connect();
-    $statement = $db->prepare("select password_hash FROM users WHERE username = ?");
+    $statement $db-?prepare("SELECT * FROM users WHERE username = $_REQUEST['username']");
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return ($rows);
+    $statement = $db->prepare("select password_hash FROM users WHERE username = :username");
     $statement->execute([$username]);
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
