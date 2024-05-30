@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  //session_start();
   require_once('database.php');
   // When a user signs in, we are going to take their username and password, hash the password, compare that hash to what's already in the database, and if they match, the user can log in to the system.
 //require_once('user.php');
