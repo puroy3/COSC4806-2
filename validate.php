@@ -14,8 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
   */
     // Get the hashed password from the database.
-      $statement = $db->prepare("select password_hash FROM users WHERE username = ?");
-      $statement->execute([$username]);
+      $statement = $db->prepare("select password_hash FROM users WHERE username = '$username'");
+      $statement->execute();
       $rows = $statement->fetch();
 
     // If password hash from database and inputted password which is hashed through password_verify match, then the user is authenticated and sent to index.php.

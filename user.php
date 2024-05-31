@@ -15,10 +15,10 @@ Class User {
   public function create_user($username, $password) {
     $db = db_connect();
     // Create an SQL statement to insert the new user into the database using the username and the password hash.
-    $statement = $db->prepare("INSERT into users (username, password_hash) VALUES (?, ?)");
+    $statement = $db->prepare("INSERT into users (username, password_hash) VALUES ('$username', '$hash')");
     // Hash the password.
     $hash = password_hash($password, PASSWORD_DEFAULT);
-    $statement->execute([$username, $hash]);
+    $statement->execute();
   }
 }
 ?>
