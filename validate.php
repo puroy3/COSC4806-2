@@ -3,8 +3,8 @@
   require_once('database.php');
 // Check if data is requested.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
+  $username = $_REQUEST['username'];
+  $password = $_REQUEST['password'];
   // Connect to database.
   $db = db_connect();
   // Check if the database is down.

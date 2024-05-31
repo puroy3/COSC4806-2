@@ -6,9 +6,9 @@ require_once('database.php');
 
 // Checking if any data is sent.
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $password2 = $_POST['password2'];
+  $username = $_REQUEST['username'];
+  $password = $_REQUEST['password'];
+  $password2 = $_REQUEST['password2'];
   // Connect to database.
   $db = db_connect();
 
