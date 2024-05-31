@@ -12,8 +12,7 @@ if (isset($_SESSION['DB_DOWN'])) {
   exit;
 }
 */
-// Check if user is authenticated.
-// If not, send them to login.php using header()...
+// Check if user is authenticated. If not, send them to login.php using header()...
 if (!isset($_SESSION['authenticated'])) {
   header("Location: login.php");
 }

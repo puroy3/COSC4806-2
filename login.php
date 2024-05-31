@@ -12,6 +12,7 @@ if (isset($_SESSION['DB_DOWN'])) {
   exit;
 }
 */
+
 // If the user is logged in and attempts to go to login.php, it redirects them to index.php.
 if (isset($_SESSION['authenticated'])) {
   header("Location: index.php");
