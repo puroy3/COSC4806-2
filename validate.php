@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $rows = $statement->fetch();
 
     // If password hash from database and inputted password which is hashed through password_verify match, then the user is authenticated and sent to index.php.
-    if ($rows && password_verify($password, $rows['password_hash'])) {
+    if ($rows and password_verify($password, $rows['password_hash'])) {
       $_SESSION['authenticated'] = true;
       $_SESSION['username'] = $username;
       header ('location: /');
