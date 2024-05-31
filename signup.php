@@ -41,12 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
-  // Check if the database is down.
-  /*if (isset($_SESSION['DB_DOWN'])) {
-    echo "The database is down.";
-    exit;
-  }
-  */
+  
 ?>
 
 <!DOCTYPE html>

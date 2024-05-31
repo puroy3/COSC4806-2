@@ -7,12 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = $_REQUEST['password'];
   // Connect to database.
   $db = db_connect();
-  // Check if the database is down.
-  /*if (isset($_SESSION['DB_DOWN'])) {
-    echo "The database is down.";
-    exit;
-  }
-  */
     // Get the hashed password from the database.
       $statement = $db->prepare("select password_hash FROM users WHERE username = '$username'");
       $statement->execute();

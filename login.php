@@ -1,18 +1,6 @@
 <?php
 session_start();
 
-/*require_once('database.php');
-
-// Connect to database.
-$db = db_connect();
-
-// Check if the database is down.
-if (isset($_SESSION['DB_DOWN'])) {
-  echo "The database is down.";
-  exit;
-}
-*/
-
 // If the user is logged in and attempts to go to login.php, it redirects them to index.php.
 if (isset($_SESSION['authenticated'])) {
   header("Location: index.php");
