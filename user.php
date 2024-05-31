@@ -21,24 +21,4 @@ Class User {
     $statement->execute([$username, $password_hash]);
   }
 }
-
-  /*public function authenticateuser($username, $password) {
-    $db = db_connect();
-    $statement = $db->prepare("SELECT * FROM users WHERE username = '$_REQUEST['username']");
-    $statement->execute();
-    $hash = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
-    $statement = $db->prepare("select password_hash FROM users WHERE username = :username");
-    $statement->execute([$username]);
-    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $rows;
-    if (password_verify($_REQUEST['password'], $hash) === password_verify(password_hash, $hash)) {
-      return true;
-  }
-    else {
-      return false;
-    }
-
-}
-}
-*/
 ?>
