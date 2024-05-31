@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else {
       // Hash the password and insert it into the database.
-      $password_hash = password_hash($password, PASSWORD_DEFAULT);
+      $hash = password_hash($password, PASSWORD_DEFAULT);
       $statement = $db->prepare("insert into users (username, password_hash) VALUES (?, ?)");
-      $statement->execute([$username, $password_hash]);
+      $statement->execute([$username, $hash]);
       // Tell the user that the account was created.
       echo "Your account was created successfully. Press login here.";
     }
