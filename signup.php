@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <br>
       <br>
       <!-- Password -->
-      <label for="password">Password:</label>
+      <label for="password">Enter a Password with at least 11 characters:</label>
       <br>
       <input type="password" id="password" name="password" required>
       <br>
